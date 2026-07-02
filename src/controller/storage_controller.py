@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, UploadFile, File
+from fastapi import APIRouter, Depends, UploadFile, File, Response
 from pydantic import BaseModel
 from service.storage_service import get_storage_service
 
@@ -21,18 +21,16 @@ async def upload_file(file: UploadFile = File(...), storage_service=Depends(get_
         url=f"/api/files/{file.filename}"
     )
 
-@router.get("/files/{filename}", response_model=bytes)
+@router.get("/files/{filename}")
 async def get_file(filename: str, storage_service=Depends(get_storage_service)):
     file_content = await storage_service.load(filename)
-    return file_content
+    return Response(content=file_content, media_type="application/octet-stream")
 
 
 @router.delete("/files/{filename}", status_code=204)
 async def delete_file(filename: str, storage_service=Depends(get_storage_service)):
     await storage_service.delete(filename)
-    return {"detail": "File deleted successfully."}
 
 @router.get("/files/{filename}/url", response_model=str)
 async def get_file_url(filename: str, storage_service=Depends(get_storage_service)):
-    url = await storage_service.get_public_url(filename)
-    return url
+    return await storage_service.get_public_url(filename)

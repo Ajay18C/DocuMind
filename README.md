@@ -7,12 +7,14 @@
 **FileStorage**: Cloudflare R2 via boto3
 **Workers**: FastApi backgroundjob
 **OCR**:
-    - **Digital** : pdfplumber
-    - **Scanned** : Paddle ocr, ocr.space
+    - **Digital** : pypdfium2
+    - **Scanned** : PaddleOCR (PP-OCRv5, local); ocr.space planned
 
 
 ## Background Job
 
 ### Extraction
-    - digital check
-    - for digital use pdfplumer get all data and accumulte in a string and persist in db
+    - detect Digital vs Scanned from extractable text
+    - Digital: pypdfium2 page texts joined and persisted
+    - Scanned: pages rendered to images, PaddleOCR text persisted
+    - empty OCR result or unrouted type fails the row

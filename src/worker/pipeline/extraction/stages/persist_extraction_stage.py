@@ -1,6 +1,6 @@
 from model.extraction_model import ExtractionStatus
 
-from .extraction_context import ExtractionContext
+from ..extraction_context import ExtractionContext
 
 
 class PersistExtractionStage:

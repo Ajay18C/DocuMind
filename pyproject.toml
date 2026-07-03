@@ -11,6 +11,9 @@ dependencies = [
     "asyncpg>=0.31.0",
     "fastapi[standard]>=0.139.0",
     "greenlet>=3.5.3",
+    "numpy>=2.5.0",
+    "paddleocr>=3.0",
+    "paddlepaddle>=3.3.1",
     "pypdfium2>=5.11.0",
     "sqlalchemy>=2.0.51",
     "sqlmodel>=0.0.39",
@@ -18,7 +21,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "poethepoet>=0.47.1",
+    "poethepoet>=0.30",
 ]
 
 [tool.poe.tasks]

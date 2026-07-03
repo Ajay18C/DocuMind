@@ -1,4 +1,4 @@
-from .extraction_context import ExtractionContext
+from ..extraction_context import ExtractionContext
 
 
 class DigitalExtractionStage:

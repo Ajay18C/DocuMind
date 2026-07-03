@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     DATABASE_URL: str
     FILE_STORAGE: Literal["local", "r2"] = "local"
     R2_CONFIG: R2Config | None = None
+    PDF_PARSER: Literal["pdfium"] = "pdfium"
+    OCR_ENGINE: Literal["paddle"] = "paddle"
+    OCR_LANGUAGE: str = "en"
 
     @model_validator(mode="after")
     def _require_r2_config_when_selected(self) -> "Settings":

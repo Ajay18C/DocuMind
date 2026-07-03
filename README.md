@@ -9,3 +9,10 @@
 **OCR**:
     - **Digital** : pdfplumber
     - **Scanned** : Paddle ocr, ocr.space
+
+
+## Background Job
+
+### Extraction
+    - digital check
+    - for digital use pdfplumer get all data and accumulte in a string and persist in db

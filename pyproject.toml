@@ -11,6 +11,16 @@ dependencies = [
     "asyncpg>=0.31.0",
     "fastapi[standard]>=0.139.0",
     "greenlet>=3.5.3",
+    "pypdfium2>=5.11.0",
     "sqlalchemy>=2.0.51",
     "sqlmodel>=0.0.39",
 ]
+
+[dependency-groups]
+dev = [
+    "poethepoet>=0.47.1",
+]
+
+[tool.poe.tasks]
+dev = "uv run fastapi dev src/main.py"
+migrate = "alembic upgrade head"

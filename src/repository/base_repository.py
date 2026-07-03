@@ -22,3 +22,9 @@ class BaseRepository[T]:
         if obj := await self.get(id):
             await self.session.delete(obj)
             await self.session.commit()
+    
+    async def update(self, obj: T) -> T:
+        self.session.add(obj)
+        await self.session.commit()
+        await self.session.refresh(obj)
+        return obj

@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 # now these resolve
 from config.settings import settings
 import src.model.extraction_model   # noqa: F401
+import src.model.document_chunk_model   # noqa: F401
 from sqlmodel import SQLModel
 from alembic import context
 from logging.config import fileConfig

@@ -1,6 +1,7 @@
 from enum import Enum
 
 from worker.pipeline.context import Context
+from worker.pipeline.page import Page
 
 
 class PdfType(str, Enum):
@@ -13,5 +14,5 @@ class ExtractionContext(Context):
     extraction_id: int
     pdf_content: bytes
     pdf_type: PdfType = PdfType.UNKNOWN
-    page_texts: list[str] = []
+    pages: list[Page] = []
     extracted_text: str = ""

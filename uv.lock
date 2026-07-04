@@ -572,6 +572,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "aioboto3" },
     { name = "aiofiles" },
+    { name = "aiohttp" },
     { name = "alembic" },
     { name = "asyncpg" },
     { name = "fastapi", extra = ["standard"] },
@@ -579,6 +580,7 @@ dependencies = [
     { name = "numpy" },
     { name = "paddleocr" },
     { name = "paddlepaddle" },
+    { name = "pgvector" },
     { name = "pypdfium2" },
     { name = "sqlalchemy" },
     { name = "sqlmodel" },
@@ -593,6 +595,7 @@ dev = [
 requires-dist = [
     { name = "aioboto3", specifier = ">=15.5.0" },
     { name = "aiofiles", specifier = ">=25.1.0" },
+    { name = "aiohttp", specifier = ">=3.14.1" },
     { name = "alembic", specifier = ">=1.18.5" },
     { name = "asyncpg", specifier = ">=0.31.0" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.139.0" },
@@ -600,6 +603,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.5.0" },
     { name = "paddleocr", specifier = ">=3.0" },
     { name = "paddlepaddle", specifier = ">=3.3.1" },
+    { name = "pgvector", specifier = ">=0.4.2" },
     { name = "pypdfium2", specifier = ">=5.11.0" },
     { name = "sqlalchemy", specifier = ">=2.0.51" },
     { name = "sqlmodel", specifier = ">=0.0.39" },
@@ -1572,6 +1576,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/76/f1/4594f5e0fcddb6953e5b8fe00da8c317b8b41b547e2b3ae2da7512943c62/pastel-0.2.1.tar.gz", hash = "sha256:e6581ac04e973cac858828c6202c1e1e81fee1dc7de7683f3e1ffe0bfd8a573d", size = 7555, upload-time = "2020-09-16T19:21:12.43Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/aa/18/a8444036c6dd65ba3624c63b734d3ba95ba63ace513078e1580590075d21/pastel-0.2.1-py2.py3-none-any.whl", hash = "sha256:4349225fcdf6c2bb34d483e523475de5bb04a5c10ef711263452cb37d7dd4364", size = 5955, upload-time = "2020-09-16T19:21:11.409Z" },
+]
+
+[[package]]
+name = "pgvector"
+version = "0.4.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/25/6c/6d8b4b03b958c02fa8687ec6063c49d952a189f8c91ebbe51e877dfab8f7/pgvector-0.4.2.tar.gz", hash = "sha256:322cac0c1dc5d41c9ecf782bd9991b7966685dee3a00bc873631391ed949513a", size = 31354, upload-time = "2025-12-05T01:07:17.87Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5a/26/6cee8a1ce8c43625ec561aff19df07f9776b7525d9002c86bceb3e0ac970/pgvector-0.4.2-py3-none-any.whl", hash = "sha256:549d45f7a18593783d5eec609ea1684a724ba8405c4cb182a0b2b08aeff04e08", size = 27441, upload-time = "2025-12-05T01:07:16.536Z" },
 ]
 
 [[package]]

@@ -1,3 +1,4 @@
+import logging
 from uuid import uuid4
 
 from fastapi.params import Depends
@@ -6,6 +7,8 @@ from repository.extraction_repository import get_extraction_repository
 from service.storage.keys import safe_key
 from service.storage_service import get_storage_service
 from worker.extraction_worker import run_extraction_job
+
+logger = logging.getLogger(__name__)
 
 
 class ExtractionService:
@@ -19,6 +22,7 @@ class ExtractionService:
         extraction = Extraction(file_path=key)
         await self.extraction_repository.add(extraction)
         background_tasks.add_task(run_extraction_job, extraction.id, key, self.storage_service)
+        logger.info("Extraction %s scheduled for %s (key=%s)", extraction.id, filename, key)
         return {"detail": f"Extraction started for file: {filename}"}
 
 

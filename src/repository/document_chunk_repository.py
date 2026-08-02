@@ -2,6 +2,8 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from model.document_chunk_model import DocumentChunk
 from repository.base_repository import BaseRepository
+from fastapi import Depends
+from config.database import get_session
 
 
 class DocumentChunkRepository(BaseRepository[DocumentChunk]):
@@ -25,3 +27,6 @@ class DocumentChunkRepository(BaseRepository[DocumentChunk]):
         stmt = stmt.order_by(distance).limit(limit)
         result = await self.session.execute(stmt)
         return [(row[0], row[1]) for row in result.all()]
+
+def get_document_chunk_repository(db = Depends(get_session)) -> DocumentChunkRepository:
+    return DocumentChunkRepository(db)

@@ -12,6 +12,7 @@ dependencies = [
     "asyncpg>=0.31.0",
     "fastapi[standard]>=0.139.0",
     "greenlet>=3.5.3",
+    "litellm>=1.95.0",
     "numpy>=2.5.0",
     "paddleocr>=3.0",
     "paddlepaddle>=3.3.1",

@@ -25,6 +25,8 @@ class Settings(BaseSettings):
     CHUNK_OVERLAP: int = 25
     EMBEDDING_ENGINE: Literal["voyage"] = "voyage"
     VOYAGE_API_KEY: str
+    RETRIEVER: Literal["topk"] = "topk"
+    OPENROUTER_API_KEY: str
 
     @model_validator(mode="after")
     def _require_r2_config_when_selected(self) -> "Settings":

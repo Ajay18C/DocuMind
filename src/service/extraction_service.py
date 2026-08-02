@@ -21,7 +21,7 @@ class ExtractionService:
         await self.storage_service.save(data, key)
         extraction = Extraction(file_path=key)
         await self.extraction_repository.add(extraction)
-        background_tasks.add_task(run_extraction_job, extraction.id, key, self.storage_service)
+        background_tasks.add_task(run_extraction_job, extraction.id, key, self.storage_service, filename)
         logger.info("Extraction %s scheduled for %s (key=%s)", extraction.id, filename, key)
         return {"detail": f"Extraction started for file: {filename}"}
 

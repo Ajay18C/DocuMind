@@ -5,5 +5,6 @@ from worker.pipeline.page import Page
 
 class DocumentIndexingContext(Context):
     extraction_id: int
+    filename: str
     pages: list[Page] = []
     chunks: list[DocumentChunk] = []

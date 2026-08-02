@@ -3,9 +3,9 @@ A system where a user uploads document packs (titles, bills of sale, dealer manu
 
 ## Phase 1 — RAG Core (learns: embeddings, chunking, vector search, RAG)
 - [x] FR-1.1 User can upload PDF/image documents; system extracts text (pdfplumber for digital, vision model or Textract for scanned).
-- [ ] FR-1.2 System chunks documents (start with ~500 tokens, 50 overlap) and stores chunks with metadata: source file, page number, doc type.
-- [ ] FR-1.3 Each chunk is embedded and stored in a vector index (MongoDB Atlas Vector Search — reuse what you know).
-- [ ] FR-1.4 User asks a question → system embeds the query → retrieves top-k chunks → LLM answers using only retrieved context.
+- [x] FR-1.2 System chunks documents (start with ~500 tokens, 50 overlap) and stores chunks with metadata: source file, page number, doc type.
+- [x] FR-1.3 Each chunk is embedded and stored in a vector index (MongoDB Atlas Vector Search — reuse what you know).
+- [x] FR-1.4 User asks a question → system embeds the query → retrieves top-k chunks → LLM answers using only retrieved context.
 - [ ] FR-1.5 Every answer includes citations: source file + page number.
 - [ ] FR-1.6 If retrieved context doesn't contain the answer, system says "not found in documents" instead of hallucinating.
 

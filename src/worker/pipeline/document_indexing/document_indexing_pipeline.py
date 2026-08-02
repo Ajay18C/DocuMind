@@ -1,7 +1,7 @@
 from worker.pipeline.pipeline import Pipeline
 
-from .chunking.chunker import get_chunker
-from .embedding.engine import get_embedding_engine
+from service.chunking.chunker import get_chunker
+from service.embedding.engine import get_embedding_engine
 from .stages.chunk_text_stage import ChunkTextStage
 from .stages.embed_chunks_stage import EmbedChunksStage
 from .stages.persist_chunks_stage import PersistChunksStage

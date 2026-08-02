@@ -17,7 +17,7 @@ from worker.pipeline.extraction.extraction_pipeline import build_extraction_pipe
 logger = logging.getLogger(__name__)
 
 
-async def run_extraction_job(extraction_id: int, file_path: str, storage_service) -> None:
+async def run_extraction_job(extraction_id: int, file_path: str, storage_service, filename: str) -> None:
     async with SessionLocal() as session:
         repository = ExtractionRepository(session)
         extraction = await repository.get(extraction_id)
@@ -41,6 +41,7 @@ async def run_extraction_job(extraction_id: int, file_path: str, storage_service
                 DocumentIndexingContext(
                     extraction_id=extraction_id,
                     pages=extraction_ctx.pages,
+                    filename=filename,
                 )
             )
             extraction.status = ExtractionStatus.INDEXED

@@ -3,6 +3,9 @@ from datetime import datetime, timezone
 from pgvector.sqlalchemy import Vector
 from sqlalchemy import Column, ForeignKey, Index, Integer
 from sqlmodel import DateTime, Field, SQLModel
+from sqlalchemy.dialects.postgresql import JSONB
+
+from service.chunking.chunker import ChunkStrategy
 
 
 EMBEDDING_DIM = 1024
@@ -21,7 +24,6 @@ class DocumentChunk(SQLModel, table=True):
         )
     )
     chunk_index: int
-    page_number: int
     content: str
     embedding: list[float] | None = Field(
         default=None, sa_column=Column(Vector(EMBEDDING_DIM), nullable=True)
@@ -29,6 +31,14 @@ class DocumentChunk(SQLModel, table=True):
     created_at: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc),
         sa_column=Column(DateTime(timezone=True)),
+    )
+    chunk_metadata: dict = Field(
+        default_factory=dict,
+        sa_column=Column(JSONB),
+    )
+    chunk_strategy: ChunkStrategy = Field(
+        default=ChunkStrategy.FIXED,
+        sa_column_kwargs={"server_default": ChunkStrategy.FIXED.name},
     )
 
     __table_args__ = (

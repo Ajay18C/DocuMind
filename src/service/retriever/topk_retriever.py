@@ -10,7 +10,7 @@ class TopkRetriever:
 
     async def retrieve(self, data: str, extraction_id: int) -> list:
         embeddings = await self.embedding_engine.embed([data])
-        return await self.document_chunk_repository.search_similar(embeddings[0], extraction_id= extraction_id)
+        return await self.document_chunk_repository.search_similar(embeddings[0], extraction_id= extraction_id, limit=5)
 
 def get_topk_retriever(document_chunk_repository=Depends(get_document_chunk_repository), embedding_engine=Depends(get_embedding_engine)):
     return TopkRetriever(document_chunk_repository, embedding_engine)

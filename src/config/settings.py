@@ -20,9 +20,9 @@ class Settings(BaseSettings):
     PDF_PARSER: Literal["pdfium"] = "pdfium"
     OCR_ENGINE: Literal["paddle"] = "paddle"
     OCR_LANGUAGE: str = "en"
-    CHUNKER: Literal["fixed"] = "fixed"
-    CHUNK_SIZE: int = 100
-    CHUNK_OVERLAP: int = 25
+    CHUNKER: Literal["fixed", "semantic"] = "semantic"
+    CHUNK_SIZE: int = 500
+    CHUNK_OVERLAP: int = 200
     EMBEDDING_ENGINE: Literal["voyage"] = "voyage"
     VOYAGE_API_KEY: str
     RETRIEVER: Literal["topk"] = "topk"

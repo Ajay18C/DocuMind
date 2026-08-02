@@ -6,8 +6,8 @@ A system where a user uploads document packs (titles, bills of sale, dealer manu
 - [x] FR-1.2 System chunks documents (start with ~500 tokens, 50 overlap) and stores chunks with metadata: source file, page number, doc type.
 - [x] FR-1.3 Each chunk is embedded and stored in a vector index (MongoDB Atlas Vector Search — reuse what you know).
 - [x] FR-1.4 User asks a question → system embeds the query → retrieves top-k chunks → LLM answers using only retrieved context.
-- [ ] FR-1.5 Every answer includes citations: source file + page number.
-- [ ] FR-1.6 If retrieved context doesn't contain the answer, system says "not found in documents" instead of hallucinating.
+- [x] FR-1.5 Every answer includes citations: source file + page number.
+- [x] FR-1.6 If retrieved context doesn't contain the answer, system says "not found in documents" instead of hallucinating.
 
 ### Acceptance test: ask 20 questions with known answers from your docs; ≥16 correct with valid citations; 0 fabricated answers on 5 trick questions about content not in the docs.
 

@@ -1,3 +1,4 @@
+from config.settings import settings
 from model.document_chunk_model import DocumentChunk
 
 from ..document_indexing_context import DocumentIndexingContext
@@ -20,7 +21,8 @@ class ChunkTextStage:
                     DocumentChunk(
                         extraction_id=ctx.extraction_id,
                         chunk_index=len(chunks),
-                        page_number=page.page_number,
+                        chunk_metadata={"filename": ctx.filename, "page_number": page.page_number},
+                        chunk_strategy=settings.CHUNKER,
                         content=content,
                     )
                 )
